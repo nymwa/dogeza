@@ -156,6 +156,11 @@
 \begin{frame}
 	\frametitle{示したいこと}
 
+	\begin{itemize}
+		\item なんで私が土下座大田区一周？
+		\item 以下のことを示せばいいです．
+	\end{itemize}
+
 	\begin{tcolorbox}[
 			colframe=orange!80,
 			colback=orange!20,
@@ -178,7 +183,7 @@
 	\begin{itemize}
 		\item 次のような流れです
 			\begin{itemize}
-				\item 正則言語・文脈自由言語・文脈依存言語とは？
+				\item 正則言語・文脈自由言語とは？
 				\item トキポナは文脈自由言語でない証明
 				\item トキポナは正則言語ではない！
 					\begin{itemize}
@@ -206,6 +211,64 @@
 
 \begin{frame}
 	\frametitle{形式言語}
+
+	\begin{itemize}
+		\item 言語は，単語の列の集合である．
+			\begin{itemize}
+				\item {\color{gray} \small 集合とは，もののあつまりのことです}
+			\end{itemize}
+		\item 語彙（=単語の集合）は，$\Sigma$で表します．
+			\begin{itemize}
+				\item 英語なら $\Sigma = \{\text{dog}, \text{cat}, \cdots\}$
+				\item トキポナなら $\Sigma = \{\text{pona}, \text{ike}, \cdots\}$
+				\item 2進列なら $\Sigma = \{0, 1\}$
+			\end{itemize}
+		\item 言語$L$は次のように定義される．
+			\begin{itemize}
+				\item $L = \{s | $\text{単語列}$s\text{は文法}G\text{を満たす}\}$
+				\item トキポナなら $L = \{\text{toki pona li toki pona}, \cdots\}$
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{形式文法}
+
+	\begin{itemize}
+		\item 文法$G$は，4要素の組$(N, \Sigma, P, S)$で定義される．
+			\begin{itemize}
+				\item $N$: 非終端記号の（有限）集合
+				\item $\Sigma$: 終端記号（=単語）の（有限）集合（=語彙）
+				\item $P$: 生成規則の（有限）集合
+				\item $S$: 開始記号
+			\end{itemize}
+		\item 「非終端記号」「終端記号」とは？
+		\item 生成規則とは？
+		\item 開始記号とは？
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{非終端記号と終端記号}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{生成規則}
+
+	\begin{itemize}
+		\item 文を生成するための規則のことです
+			\begin{itemize}
+				\item 非終端記号や終端記号の列を置き換えることで文を生成する！
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{開始記号}
 \end{frame}
 
 
@@ -220,12 +283,32 @@
 
 
 \begin{frame}
+	\frametitle{正則言語の例}
+\end{frame}
+
+
+\begin{frame}
 	\frametitle{文脈自由言語}
 \end{frame}
 
 
 \begin{frame}
-	\frametitle{文脈依存言語}
+	\frametitle{文脈自由言語の例}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{文脈依存言語と句構造文法}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{ここまで}
+
+	\begin{itemize}
+		\item 形式言語での，「言語」「文法」について説明しました
+		\item 「じゃあなんでトキポナは正則言語じゃないの」
+	\end{itemize}
 \end{frame}
 
 
@@ -260,12 +343,74 @@
 
 
 \begin{frame}
+	\frametitle{文脈自由言語でないことの証明とは？}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{文脈自由言語の反復補題}
+\end{frame}
+
+
+\begin{frame}
 	\frametitle{コピー言語は文脈自由でない}
 \end{frame}
 
 
 \begin{frame}
+	\frametitle{コピー言語は文脈自由でない}
+
+	\begin{center}
+		\includegraphics[width=10cm]{wakannai.jpg}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{より直感的な理解}
+
+	\begin{itemize}
+		\item 交差する文脈がある
+			\begin{itemize}
+				\item 文脈``自由''言語は，再帰できるが交差できない
+				\item 文脈依存言語は交差できる
+			\end{itemize}
+	\end{itemize}
+
+	\begin{figure}[h]
+		\centering
+		\begin{tikzpicture}[>=latex,font=\sffamily,scale=0.9,transform shape]
+
+			\node (a) at (0, 0) {あ};
+			\node (b) at (1, 0) {い};
+			\node (c) at (2, 0) {う};
+			\node (d) at (3, 0) {え};
+			\node (e) at (4, 0) {お};
+			\node (f) at (5, 0) {あ};
+			\node (g) at (6, 0) {い};
+			\node (h) at (7, 0) {う};
+			\node (i) at (8, 0) {え};
+			\node (j) at (9, 0) {お};
+
+			\draw[-{Latex}] (a.south) to [out=280, in=260] (f.south);
+			\draw[-{Latex}] (b.south) to [out=280, in=260] (g.south);
+			\draw[-{Latex}] (c.south) to [out=280, in=260] (h.south);
+			\draw[-{Latex}] (d.south) to [out=280, in=260] (i.south);
+			\draw[-{Latex}] (e.south) to [out=280, in=260] (j.south);
+
+		\end{tikzpicture}
+	\end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}
 	\frametitle{コピー言語は文脈依存}
+
+	\begin{itemize}
+		\item 実際に文法を定義できます．
+	\end{itemize}
 \end{frame}
 
 
@@ -311,7 +456,13 @@
 			\end{itemize}
 		\item 乗り換えで歩くのは許してほしい
 	\end{itemize}
+\end{frame}
 
+
+\begin{frame}
+	\begin{center}
+		{\Huge \liberation \color{cyan} \text{≡＞ω＜≡}}
+	\end{center}
 \end{frame}
 
 \end{document}
